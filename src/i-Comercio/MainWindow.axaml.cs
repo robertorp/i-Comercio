@@ -18,6 +18,7 @@ namespace i_Comercio
         {
             InitializeComponent();
             InitializeTimer();
+            InitializeCloseButton();
         }
 
         private void InitializeTimer()
@@ -35,6 +36,38 @@ namespace i_Comercio
                 }
             };
             _timeTimer.Start();
+        }
+
+        private void InitializeCloseButton()
+        {
+            // Encontra o botão fechar e adiciona eventos de hover
+            var closeButton = this.FindControl<Button>("CloseButton");
+            if (closeButton != null)
+            {
+                closeButton.PointerEntered += (s, e) =>
+                {
+                    // Muda para ícone branco no hover
+                    var closeImage = closeButton.Content as Image;
+                    if (closeImage != null)
+                    {
+                        var whiteCloseDrawing = this.FindResource("CloseIconWhite") as DrawingGroup;
+                        if (whiteCloseDrawing != null)
+                            closeImage.Source = new DrawingImage(whiteCloseDrawing);
+                    }
+                };
+
+                closeButton.PointerExited += (s, e) =>
+                {
+                    // Volta para ícone normal
+                    var closeImage = closeButton.Content as Image;
+                    if (closeImage != null)
+                    {
+                        var normalCloseDrawing = this.FindResource("CloseIcon") as DrawingGroup;
+                        if (normalCloseDrawing != null)
+                            closeImage.Source = new DrawingImage(normalCloseDrawing);
+                    }
+                };
+            }
         }
 
         // Toggle do Menu Principal
