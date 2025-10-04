@@ -1,0 +1,328 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Ícone Loja -->
+    <DrawingGroup x:Key="ShopIcon">
+        <GeometryDrawing Brush="White">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="2,3">
+                        <PolyLineSegment Points="6,3 8,6 8,21 0,21 0,6 2,3"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="16,3">
+                        <PolyLineSegment Points="20,3 22,6 22,21 14,21 14,6 16,3"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="3,12">
+                        <PolyLineSegment Points="7,12 7,16 3,16 3,12"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Pessoas/Clientes -->
+    <DrawingGroup x:Key="PeopleIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="16,4" RadiusX="4" RadiusY="4"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="12,14">
+                        <PolyLineSegment Points="20,14 20,20 12,20 12,14"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="8,4" RadiusX="3" RadiusY="3"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="4,14">
+                        <PolyLineSegment Points="12,14 12,20 4,20 4,14"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Caixa/Estoque -->
+    <DrawingGroup x:Key="BoxIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="21,16">
+                        <PolyLineSegment Points="21,8 19,6 5,6 3,8 3,16 5,18 19,18 21,16"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="16,10">
+                        <PolyLineSegment Points="12,6 8,10"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Dinheiro/Vendas -->
+    <DrawingGroup x:Key="MoneyIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="12,2">
+                        <LineSegment Point="12,22"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="17,5">
+                        <PolyLineSegment Points="9,5 7,7 7,9 9,11 15,11 17,13 17,15 15,17 9,17"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Cartão/Financeiro -->
+    <DrawingGroup x:Key="CreditCardIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="21,4">
+                        <PolyLineSegment Points="19,2 5,2 3,4 3,20 5,22 19,22 21,20 21,4"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="3,10">
+                        <LineSegment Point="21,10"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Configurações -->
+    <DrawingGroup x:Key="SettingsIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="12,12" RadiusX="3" RadiusY="3"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="19.4,15">
+                        <PolyLineSegment Points="18.7,16.2 20.9,17.7 19.8,19.8 17.7,18.7 16.2,20.9 15,19.4 15,22 9,22 9,19.4 7.8,20.9 6.3,18.7 4.1,19.8 3,17.7 5.2,16.2 4.6,15 2,15 2,9 4.6,9 5.2,7.8 3,6.3 4.1,4.1 6.3,5.2 7.8,3 9,4.6 9,2 15,2 15,4.6 16.2,3 17.7,5.2 19.8,4.1 20.9,6.3 18.7,7.8 19.4,9 22,9 22,15 19.4,15"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Lista -->
+    <DrawingGroup x:Key="ListIcon">
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="8,6">
+                        <LineSegment Point="21,6"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="8,12">
+                        <LineSegment Point="21,12"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="8,18">
+                        <LineSegment Point="21,18"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="3,6">
+                        <LineSegment Point="3.01,6"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="3,12">
+                        <LineSegment Point="3.01,12"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="3,18">
+                        <LineSegment Point="3.01,18"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Plus -->
+    <DrawingGroup x:Key="PlusIcon">
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="12,5">
+                        <LineSegment Point="12,19"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="5,12">
+                        <LineSegment Point="19,12"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Relatório -->
+    <DrawingGroup x:Key="ChartIcon">
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="18,20">
+                        <LineSegment Point="18,10"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="12,20">
+                        <LineSegment Point="12,4"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="6,20">
+                        <LineSegment Point="6,14"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Carrinho -->
+    <DrawingGroup x:Key="ShoppingCartIcon">
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="9,20" RadiusX="1" RadiusY="1"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="20,20" RadiusX="1" RadiusY="1"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#BDC3C7">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="1,1">
+                        <PolyLineSegment Points="5,1 7,13 21,13 23,5 6,5"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Ajuda -->
+    <DrawingGroup x:Key="HelpIcon">
+        <GeometryDrawing Brush="#495057">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="12,12" RadiusX="10" RadiusY="10"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="White">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="12,12" RadiusX="8" RadiusY="8"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#495057">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="9.09,9">
+                        <PolyLineSegment Points="10.5,7.5 12,7.5 13.5,9 13.5,10.5 12,10.5"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="12,13.5">
+                        <LineSegment Point="12.01,13.5"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Fechar -->
+    <DrawingGroup x:Key="CloseIcon">
+        <GeometryDrawing Brush="#495057">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="18,6">
+                        <PolyLineSegment Points="6,18"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="6,6">
+                        <PolyLineSegment Points="18,18"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Aviso/Desenvolvimento -->
+    <DrawingGroup x:Key="WarningIcon">
+        <GeometryDrawing Brush="Orange">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="10.29,3.86">
+                        <PolyLineSegment Points="1.82,18 22.18,18 13.71,3.86"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="12,9">
+                        <LineSegment Point="12,13"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="12,17">
+                        <LineSegment Point="12.01,17"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Setas -->
+    <DrawingGroup x:Key="ChevronRightIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="9,18">
+                        <PolyLineSegment Points="15,12 9,6"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <DrawingGroup x:Key="ChevronDownIcon">
+        <GeometryDrawing Brush="#ECF0F1">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="6,9">
+                        <PolyLineSegment Points="12,15 18,9"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <DrawingGroup x:Key="ChevronLeftIcon">
+        <GeometryDrawing Brush="White">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="15,18">
+                        <PolyLineSegment Points="9,12 15,6"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Ícone Relógio -->
+    <DrawingGroup x:Key="ClockIcon">
+        <GeometryDrawing Brush="#6C757D">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="12,12" RadiusX="10" RadiusY="10"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="White">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry Center="12,12" RadiusX="8" RadiusY="8"/>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#6C757D">
+            <GeometryDrawing.Geometry>
+                <PathGeometry>
+                    <PathFigure StartPoint="12,6">
+                        <PolyLineSegment Points="12,12 16,14"/>
+                    </PathFigure>
+                </PathGeometry>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+</ResourceDictionary>

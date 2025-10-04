@@ -2,8 +2,671 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="800"
         x:Class="i_Comercio.MainWindow"
-        Title="i_Comercio">
-    Welcome to Avalonia!
+        Title="i-Comercio - Sistema de Gestão Comercial"
+        WindowState="Maximized"
+        Background="#F8F9FA"
+        FontFamily="Segoe UI">
+
+    <Window.Styles>
+        <!-- Estilos do Menu Lateral -->
+        <Style Selector="Border.SideMenu">
+            <Setter Property="Background" Value="#2C3E50"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.3" Easing="CubicEaseInOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.MenuToggle">
+            <Setter Property="Background" Value="#34495E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.MenuToggle:pointerover">
+            <Setter Property="Background" Value="#3F566B"/>
+        </Style>
+
+        <Style Selector="Button.MenuItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#ECF0F1"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.MenuItem:pointerover">
+            <Setter Property="Background" Value="#34495E"/>
+        </Style>
+
+        <Style Selector="Button.MenuItem.Active">
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style Selector="Button.SubMenuItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#BDC3C7"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="50,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style Selector="Button.SubMenuItem:pointerover">
+            <Setter Property="Background" Value="#34495E"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style Selector="Button.SubMenuItem.Active">
+            <Setter Property="Background" Value="#2980B9"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style Selector="Image.MenuIcon">
+            <Setter Property="Width" Value="18"/>
+            <Setter Property="Height" Value="18"/>
+            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="TextBlock.MenuText">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <!-- Estilos do Header -->
+        <Style Selector="Border.TopBar">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E9ECEF"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Height" Value="60"/>
+        </Style>
+
+        <Style Selector="Button.HeaderButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="#495057"/>
+        </Style>
+
+        <Style Selector="Button.HeaderButton:pointerover">
+            <Setter Property="Background" Value="#F8F9FA"/>
+        </Style>
+
+        <Style Selector="Button.CloseButton:pointerover">
+            <Setter Property="Background" Value="#DC3545"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- Estilos da Área de Conteúdo -->
+        <Style Selector="Border.ContentArea">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="BoxShadow" Value="0 2 10 #19000000"/>
+        </Style>
+        
+        <!-- Estilo para ícones grandes -->
+        <Style Selector="Image.BigIcon">
+            <Setter Property="Width" Value="64"/>
+            <Setter Property="Height" Value="64"/>
+        </Style>
+        
+        <!-- Estilo para ícones de seta -->
+        <Style Selector="Image.ArrowIcon">
+            <Setter Property="Width" Value="12"/>
+            <Setter Property="Height" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu Lateral -->
+        <Border Grid.Column="0" 
+                Name="SideMenuBorder" 
+                Classes="SideMenu" 
+                Width="280">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header do Menu -->
+                <Border Grid.Row="0" Background="#34495E" Height="60">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" 
+                                   Orientation="Horizontal" 
+                                   VerticalAlignment="Center" 
+                                   Margin="20,0">
+                            <Image Width="24" Height="24" Margin="0,0,10,0">
+                                <Image.Source>
+                                    <DrawingImage Drawing="{StaticResource ShopIcon}"/>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Name="MenuTitle" 
+                                      Text="i-Comercio" 
+                                      FontSize="18" 
+                                      FontWeight="Bold" 
+                                      Foreground="White" 
+                                      VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button Grid.Column="1" 
+                               Name="MenuToggleButton" 
+                               Classes="MenuToggle" 
+                               Width="50" 
+                               Click="MenuToggle_Click">
+                            <Image Name="ToggleIcon" Width="16" Height="16">
+                                <Image.Source>
+                                    <DrawingImage Drawing="{StaticResource ChevronLeftIcon}"/>
+                                </Image.Source>
+                            </Image>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!-- Itens do Menu -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="MenuItems" Margin="0,10">
+                        
+                        <!-- Menu Clientes -->
+                        <StackPanel Name="ClientesMenu">
+                            <Button Name="ClientesButton" 
+                                   Classes="MenuItem" 
+                                   Click="MenuClientes_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.Column="0" Classes="MenuIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource PeopleIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Grid.Column="1" Name="ClientesText" Classes="MenuText" Text="Clientes"/>
+                                    <Image Grid.Column="2" Name="ClientesArrow" Classes="ArrowIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource ChevronRightIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Button>
+                            
+                            <StackPanel Name="ClientesSubMenu" IsVisible="False">
+                                <Button Classes="SubMenuItem" Click="ListarClientes_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ListIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Listar Clientes"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="AdicionarCliente_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource PlusIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Adicionar Cliente"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="RelatoriosClientes_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Relatórios Gerais"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="RelatoriosDetalhadosClientes_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Relatórios Detalhados"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Menu Estoque -->
+                        <StackPanel Name="EstoqueMenu">
+                            <Button Name="EstoqueButton" 
+                                   Classes="MenuItem" 
+                                   Click="MenuEstoque_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.Column="0" Classes="MenuIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource BoxIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Grid.Column="1" Name="EstoqueText" Classes="MenuText" Text="Estoque"/>
+                                    <Image Grid.Column="2" Name="EstoqueArrow" Classes="ArrowIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource ChevronRightIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Button>
+                            
+                            <StackPanel Name="EstoqueSubMenu" IsVisible="False">
+                                <Button Classes="SubMenuItem" Click="ListarProdutos_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ListIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Listar Produtos"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="AdicionarProduto_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource PlusIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Adicionar Produto"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="ControleEstoque_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource BoxIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Controle de Estoque"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="RelatorioProdutos_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Relatórios de Produtos"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Menu Vendas -->
+                        <StackPanel Name="VendasMenu">
+                            <Button Name="VendasButton" 
+                                   Classes="MenuItem" 
+                                   Click="MenuVendas_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.Column="0" Classes="MenuIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource MoneyIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Grid.Column="1" Name="VendasText" Classes="MenuText" Text="Vendas"/>
+                                    <Image Grid.Column="2" Name="VendasArrow" Classes="ArrowIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource ChevronRightIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Button>
+                            
+                            <StackPanel Name="VendasSubMenu" IsVisible="False">
+                                <Button Classes="SubMenuItem" Click="PDV_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ShoppingCartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="PDV - Ponto de Venda"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="HistoricoVendas_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ListIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Histórico de Vendas"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="RelatoriosVendas_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Relatórios de Vendas"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="AnaliseVendas_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Análise de Performance"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Menu Financeiro -->
+                        <StackPanel Name="FinanceiroMenu">
+                            <Button Name="FinanceiroButton" 
+                                   Classes="MenuItem" 
+                                   Click="MenuFinanceiro_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.Column="0" Classes="MenuIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource CreditCardIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Grid.Column="1" Name="FinanceiroText" Classes="MenuText" Text="Financeiro"/>
+                                    <Image Grid.Column="2" Name="FinanceiroArrow" Classes="ArrowIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource ChevronRightIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Button>
+                            
+                            <StackPanel Name="FinanceiroSubMenu" IsVisible="False">
+                                <Button Classes="SubMenuItem" Click="ContasReceber_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource MoneyIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Contas a Receber"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="ContasPagar_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource CreditCardIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Contas a Pagar"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="FluxoCaixa_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Fluxo de Caixa"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="RelatoriosFinanceiros_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ChartIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Relatórios Financeiros"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Menu Configurações -->
+                        <StackPanel Name="ConfigMenu">
+                            <Button Name="ConfigButton" 
+                                   Classes="MenuItem" 
+                                   Click="MenuConfig_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.Column="0" Classes="MenuIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource SettingsIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Grid.Column="1" Name="ConfigText" Classes="MenuText" Text="Configurações"/>
+                                    <Image Grid.Column="2" Name="ConfigArrow" Classes="ArrowIcon">
+                                        <Image.Source>
+                                            <DrawingImage Drawing="{StaticResource ChevronRightIcon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Button>
+                            
+                            <StackPanel Name="ConfigSubMenu" IsVisible="False">
+                                <Button Classes="SubMenuItem" Click="DadosEmpresa_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource ShopIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Dados da Empresa"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="Usuarios_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource PeopleIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Usuários e Permissões"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="Backup_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource BoxIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Backup e Segurança"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Classes="SubMenuItem" Click="Personalizacao_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Margin="0,0,8,0">
+                                            <Image.Source>
+                                                <DrawingImage Drawing="{StaticResource SettingsIcon}"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Personalização"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Rodapé do Menu -->
+                <Border Grid.Row="2" Background="#1A252F" Height="50">
+                    <StackPanel Orientation="Horizontal" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center">
+                        <TextBlock Name="FooterText" 
+                                  Text="© 2024 i-Comercio" 
+                                  FontSize="11" 
+                                  Foreground="#7F8C8D"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Área Principal -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header Superior -->
+            <Border Grid.Row="0" Classes="TopBar">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" 
+                               Orientation="Horizontal" 
+                               VerticalAlignment="Center" 
+                               Margin="20,0">
+                        <TextBlock Name="PageTitle" 
+                                  Text="Bem-vindo ao i-Comercio" 
+                                  FontSize="24" 
+                                  FontWeight="Bold" 
+                                  Foreground="#2C3E50"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" 
+                               Orientation="Horizontal" 
+                               VerticalAlignment="Center" 
+                               Margin="0,0,20,0">
+                        
+                        <Image Width="16" Height="16" Margin="0,0,5,0" VerticalAlignment="Center">
+                            <Image.Source>
+                                <DrawingImage Drawing="{StaticResource ClockIcon}"/>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Name="CurrentTime" 
+                                  FontSize="14" 
+                                  Foreground="#6C757D" 
+                                  VerticalAlignment="Center" 
+                                  Margin="0,0,20,0"/>
+                        
+                        <Button Classes="HeaderButton">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Height="16" Margin="0,0,5,0">
+                                    <Image.Source>
+                                        <DrawingImage Drawing="{StaticResource HelpIcon}"/>
+                                    </Image.Source>
+                                </Image>
+                                <TextBlock Text="Ajuda"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="HeaderButton CloseButton" Click="CloseButton_Click">
+                            <Image Width="16" Height="16">
+                                <Image.Source>
+                                    <DrawingImage Drawing="{StaticResource CloseIcon}"/>
+                                </Image.Source>
+                            </Image>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Área de Conteúdo -->
+            <Border Grid.Row="1" Classes="ContentArea">
+                <ContentControl Name="ContentArea">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Classes="BigIcon" HorizontalAlignment="Center" Margin="0,0,0,20">
+                            <Image.Source>
+                                <DrawingImage Drawing="{StaticResource ShopIcon}"/>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="Bem-vindo ao i-Comercio!" 
+                                  FontSize="32" 
+                                  FontWeight="Light" 
+                                  Foreground="#2C3E50"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,0,0,10"/>
+                        <TextBlock Text="Sistema de Gestão Comercial Completo" 
+                                  FontSize="18" 
+                                  Foreground="#6C757D"
+                                  HorizontalAlignment="Center"/>
+                        <TextBlock Text="Selecione uma opção no menu lateral para começar" 
+                                  FontSize="14" 
+                                  Foreground="#ADB5BD"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,20,0,0"/>
+                    </StackPanel>
+                </ContentControl>
+            </Border>
+        </Grid>
+    </Grid>
 </Window>
